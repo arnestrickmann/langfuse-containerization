@@ -3,7 +3,7 @@ services:
     image: docker.io/node:20
     working_dir: /app/web
     command: >
-      sh -lc 'corepack enable && (pnpm install --frozen-lockfile || npm ci) && (pnpm run dev || npm run dev)'
+      sh -lc 'corepack enable && (pnpm install --frozen-lockfile || npm ci || yarn install) && (pnpm run dev -- --host 0.0.0.0 || npm run dev -- --host 0.0.0.0 || yarn dev --host 0.0.0.0)'
     environment:
       HOST: 0.0.0.0
       PORT: 3000
